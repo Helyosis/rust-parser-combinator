@@ -51,7 +51,7 @@ pub fn take(n: usize) -> Parser<'static, String> {
         move |input: String, index: usize| match input.get(index..index + n) {
             Some(val) => Ok((index + n, val.to_string())),
             None => Err(format!(
-                "take: Wanted to take {} char(s) at index {} but string was too short (len = {})",
+                "take: Wanted to take {} char(s) at index {} but string was too short (len = {}) or was not on unicode boundaries.",
                 n,
                 index,
                 input.len()
