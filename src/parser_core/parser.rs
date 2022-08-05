@@ -58,4 +58,12 @@ where
     {
         parse_if(self, pred)
     }
+
+    pub fn and_then<F, B>(self, continuation_function: F) -> Parser<'a, B>
+    where
+        F: Fn(A) -> Parser<'a, B> + Sync + Send + 'a,
+        B: Clone + 'a,
+    {
+        and_then(self, continuation_function)
+    }
 }
