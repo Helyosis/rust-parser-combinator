@@ -26,7 +26,7 @@ mod tests {
     fn leaf_element_raw_is() {
         assert_eq!(
             Ok((
-                29,
+                30,
                 (
                     "div".to_string(),
                     vec![
