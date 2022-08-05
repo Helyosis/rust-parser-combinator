@@ -60,3 +60,63 @@ pub fn take(n: usize) -> Parser<'static, String> {
     }
     .into()
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::*;
+
+    #[test]
+    fn nothing_start_of_input() {
+        assert_eq!(
+            Ok((0, "".to_string())),
+            nothing().run("Hello world!".to_string(), 0)
+        )
+    }
+
+    #[test]
+    fn everything_end_of_input() {
+        assert_eq!(
+            Ok((12, "".to_string())),
+            everything().run("Hello world!".to_string(), 12)
+        )
+    }
+
+    #[test]
+    fn start_of_input_is() {
+        assert_eq!(
+            Ok((0, "".to_string())),
+            start_of_input().run("Hello world!".to_string(), 0)
+        )
+    }
+
+    #[test]
+    fn end_of_input_is() {
+        assert_eq!(
+            Ok((12, "".to_string())),
+            end_of_input().run("Hello world!".to_string(), 12)
+        )
+    }
+
+    #[test]
+    fn start_of_input_is_not() {
+        assert!(start_of_input().run("Hello world!".to_string(), 1).is_err())
+    }
+
+    #[test]
+    fn end_of_input_is_not() {
+        assert!(end_of_input().run("Hello world!".to_string(), 1).is_err())
+    }
+
+    #[test]
+    fn take_one() {
+        assert_eq!(
+            Ok((1, "H".to_string())),
+            take(1).run("Hello world!".to_string(), 0)
+        )
+    }
+
+    #[test]
+    fn take_too_many() {
+        assert!(take(100).run("Hello world!".to_string(), 0).is_err())
+    }
+}
