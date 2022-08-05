@@ -51,4 +51,11 @@ where
     {
         map_error(self, transformation_function)
     }
+
+    pub fn parse_if<F>(self, pred: F) -> Parser<'a, A>
+    where
+        F: Fn(A) -> bool + Sync + Send + 'a,
+    {
+        parse_if(self, pred)
+    }
 }
