@@ -1,7 +1,7 @@
 mod common;
 
 #[cfg(test)]
-mod attributes {
+mod tests {
     use super::common::*;
 
     #[test]
