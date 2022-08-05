@@ -1,5 +1,3 @@
-#![feature(assert_matches)]
-
 mod combinator;
 mod parser_core;
 mod sequence;
