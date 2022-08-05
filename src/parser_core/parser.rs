@@ -49,7 +49,7 @@ where
     where
         F: Fn(String) -> String + Send + Sync + 'a,
     {
-        map_error(self, transformation_function)
+        map_err(self, transformation_function)
     }
 
     pub fn parse_if<F>(self, pred: F) -> Parser<'a, A>

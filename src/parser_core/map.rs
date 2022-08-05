@@ -16,7 +16,7 @@ where
     .into()
 }
 
-pub fn map_error<'a, F, A>(parser: Parser<'a, A>, transformation_fn: F) -> Parser<A>
+pub fn map_err<'a, F, A>(parser: Parser<'a, A>, transformation_fn: F) -> Parser<A>
 where
     A: Clone + 'a,
     F: Fn(String) -> String + Sync + Send + 'a,
