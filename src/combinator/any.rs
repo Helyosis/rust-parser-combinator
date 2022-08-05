@@ -22,7 +22,6 @@ where
 #[cfg(test)]
 mod tests {
     use crate::*;
-    use std::assert_matches::assert_matches;
 
     #[test]
     fn any_one_valid() {
@@ -33,7 +32,7 @@ mod tests {
     #[test]
     fn any_none_valid() {
         let p = any(vec![str("a"), str("b"), str("c")]);
-        assert_matches!(p.run("d".to_string(), 0), Err(_))
+        assert!(p.run("d".to_string(), 0).is_err())
     }
 
     #[test]

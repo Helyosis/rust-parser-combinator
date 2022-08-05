@@ -44,8 +44,6 @@ where
 
 #[cfg(test)]
 mod tests {
-    use std::assert_matches::assert_matches;
-
     use crate::*;
 
     #[test]
@@ -58,10 +56,9 @@ mod tests {
 
     #[test]
     fn triplet_err() {
-        assert_matches!(
-            triplet(str("1"), digit(), digits()).run("1a".to_string(), 0),
-            Err(_)
-        )
+        assert!(triplet(str("1"), digit(), digits())
+            .run("1a".to_string(), 0)
+            .is_err())
     }
 
     #[test]

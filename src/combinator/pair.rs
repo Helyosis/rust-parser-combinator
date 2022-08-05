@@ -37,8 +37,6 @@ where
 
 #[cfg(test)]
 mod tests {
-    use std::assert_matches::assert_matches;
-
     use crate::*;
 
     #[test]
@@ -51,7 +49,7 @@ mod tests {
 
     #[test]
     fn pair_err() {
-        assert_matches!(pair(str("1"), digit()).run("1a2".to_string(), 0), Err(_))
+        assert!(pair(str("1"), digit()).run("1a2".to_string(), 0).is_err())
     }
 
     #[test]
