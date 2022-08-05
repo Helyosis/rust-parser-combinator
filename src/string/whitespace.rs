@@ -1,4 +1,4 @@
-use crate::Parser;
+use crate::{between, Parser};
 use crate::{many, many1};
 
 pub fn whitespace() -> Parser<'static, String> {
@@ -18,6 +18,13 @@ pub fn whitespaces() -> Parser<'static, String> {
 
 pub fn whitespaces1() -> Parser<'static, String> {
     many1(whitespace()).map(|v| v.join(""))
+}
+
+pub fn wrap_in_spaces<'a, A>(p: Parser<'a, A>) -> Parser<'a, A>
+where
+    A: Clone + std::fmt::Debug + 'a,
+{
+    between(whitespaces(), whitespaces(), p)
 }
 
 #[cfg(test)]
