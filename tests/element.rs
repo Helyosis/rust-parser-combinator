@@ -79,4 +79,38 @@ mod tests {
             .run("<div x=\"1\" >...</div>".to_string(), 0)
             .is_err())
     }
+
+    #[test]
+    fn parent_element_is() {
+        assert_eq!(
+            Ok((
+                36,
+                Element {
+                    name: "div".to_string(),
+                    attributes: vec![
+                        ("x".to_string(), "1".to_string()),
+                        ("y".to_string(), "2".to_string()),
+                        ("z".to_string(), "3".to_string())
+                    ],
+                    children: vec![]
+                }
+            )),
+            parent_element().run("<div x=\"1\" y = \"2\" z = \"3\"         >".to_string(), 0)
+        )
+    }
+
+    #[test]
+    fn parent_element_is_contain_children() {
+        assert_eq!(
+            Ok((
+                29,
+                Element {
+                    name: "a".to_string(),
+                    attributes: vec![("href".to_string(), "https://google.com".to_string())],
+                    children: vec![]
+                }
+            )),
+            parent_element().run("<a href=\"https://google.com\">...</a>".to_string(), 0)
+        )
+    }
 }

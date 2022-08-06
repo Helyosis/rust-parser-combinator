@@ -25,3 +25,11 @@ pub fn leaf_element<'a>() -> Parser<'a, Element> {
         children: vec![],
     })
 }
+
+pub fn parent_element<'a>() -> Parser<'a, Element> {
+    left(element_start(), str(">")).map(|(n, attr)| Element {
+        name: n,
+        attributes: attr,
+        children: vec![],
+    })
+}
