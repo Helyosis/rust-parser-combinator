@@ -11,3 +11,10 @@ You can see an example project in the test/ folder at the root. Because it is al
 
 ## Documentation
 There is currently no documentation but the functions (and their tests) should be (hopefully) self-explanatory.
+
+## Credit
+My code is largely inspired by the very-well written tutorial on parser combinator for rust written on godit.lol.
+The idea to build such a project was inspired by a Youtube series by LowLevelJavascript building a parser combinator in javascript.
+
+- [Learning Parser Combinators With Rust](https://bodil.lol/parser-combinators)
+- [Parser Combinators From Scratch](https://www.youtube.com/playlist?list=PLP29wDx6QmW5yfO1LAgO8kU3aQEj8SIrU)
